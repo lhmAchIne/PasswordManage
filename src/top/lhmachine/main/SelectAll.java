@@ -1,5 +1,6 @@
 package top.lhmachine.main;
 
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -60,7 +61,7 @@ public class SelectAll extends JFrame implements ActionListener{
 		this.add(jp2);
 		this.add(jp3);
 		
-		this.setLayout(new GridLayout(4, 1));
+		this.setLayout(new GridLayout(3, 1));
 		this.setTitle("网站密码管理系统");          
 		this.setSize(400,300);         
         this.setLocation(400, 300);          
