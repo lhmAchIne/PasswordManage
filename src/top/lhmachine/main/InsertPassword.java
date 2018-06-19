@@ -1,4 +1,4 @@
-package top.lhmachine.login;
+package top.lhmachine.main;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

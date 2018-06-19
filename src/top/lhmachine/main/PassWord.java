@@ -1,4 +1,4 @@
-package top.lhmachine.login;
+package top.lhmachine.main;
 
 import java.io.Serializable;
 
@@ -38,6 +38,6 @@ public class PassWord implements Serializable{
 	}
 	
 	public String toString() {
-		return webname+" "+username+" "+password;
+		return webname+"    "+username+"    "+password;
 	}
 }

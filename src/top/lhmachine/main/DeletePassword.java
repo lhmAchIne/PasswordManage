@@ -1,4 +1,4 @@
-package top.lhmachine.login;
+package top.lhmachine.main;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -13,24 +13,25 @@ import javax.swing.JTextField;
 
 import top.lhmachine.oracle.DBHelper;
 
-public class SelectPassword extends JFrame implements ActionListener{
+public class DeletePassword extends JFrame implements ActionListener{
 	/**
 	 * @author lhmachine
-	 * 查询密码
+	 * 删除密码
 	 */
 	
 	private JTextField jtf1, jtf2, jtf3 = null;
-	private JButton jb_select, jb_back, jb_finish = null;
+	private JButton jb_select, jb_back, jb_delete, jb_finish = null;
 	private JLabel jl1, jl2, jl3 =null;
 	private JPanel jp1, jp2, jp3, jp4 = null;
 	private DBHelper dbHelper = new DBHelper();
 	
-	public SelectPassword() {
+	public DeletePassword() {
 		/**
 		 * 构造器
 		 */
 		//设置按钮
 		jb_select = new JButton("查询");
+		jb_delete = new JButton("删除密码");
 		jb_back = new JButton("返回目录");
 		jb_finish = new JButton("退出系统");
 		
@@ -38,6 +39,7 @@ public class SelectPassword extends JFrame implements ActionListener{
 		jb_select.addActionListener(this);
 		jb_back.addActionListener(this);
 		jb_finish.addActionListener(this);
+		jb_delete.addActionListener(this);
 		
 		//设置信息
 		jl1 = new JLabel("网站名:");
@@ -61,6 +63,7 @@ public class SelectPassword extends JFrame implements ActionListener{
 		jp2.add(jtf2);
 		jp3.add(jl3);
 		jp3.add(jtf3);
+		jp4.add(jb_delete);
 		jp4.add(jb_back);
 		jp4.add(jb_finish);
 		
@@ -97,6 +100,20 @@ public class SelectPassword extends JFrame implements ActionListener{
 				}else {
 					jtf2.setText(result.getUserName());
 					jtf3.setText(result.getPassWord());
+				}
+			}
+		}else if (e.getActionCommand() == "删除密码"){
+			//删除密码
+			if (jtf1.getText().isEmpty() || jtf2.getText().isEmpty() || jtf3.getText().isEmpty()) {
+				JOptionPane.showMessageDialog(null, "请先查询数据!", "提示消息", JOptionPane.WARNING_MESSAGE);
+			}else {
+				if (dbHelper.deleteData(jtf1.getText().toString())) {
+					JOptionPane.showMessageDialog(null, "删除成功!", "提示消息", JOptionPane.INFORMATION_MESSAGE);
+					jtf1.setText("");
+					jtf2.setText("");
+					jtf3.setText("");
+				}else {
+					JOptionPane.showMessageDialog(null, "删除失败!", "提示消息", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		}else {

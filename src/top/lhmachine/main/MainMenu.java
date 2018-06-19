@@ -1,4 +1,4 @@
-package top.lhmachine.login;
+package top.lhmachine.main;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -22,9 +22,9 @@ public class MainMenu extends JFrame implements ActionListener{
 	 */
 	
 	//声明控件
-	private JButton jb_select, jb_insert, jb_finish = null;
+	private JButton jb_select, jb_insert, jb_update, jb_delete, jb_finish, jb_all = null;
 	private JLabel jl1 = null;
-	private JPanel jp1, jp2, jp3, jp4 = null;
+	private JPanel jp1, jp2, jp3, jp4, jp5, jp6, jp7 = null;
 	
 	private ArrayList<PassWord> list = new ArrayList<>();	//存储列表
 	private Boolean data_symbol = false;					//数据存在标志
@@ -33,12 +33,18 @@ public class MainMenu extends JFrame implements ActionListener{
 		//创建按钮
 		jb_insert = new JButton("增加密码");
 		jb_select = new JButton("查询密码");
+		jb_all = new JButton("查询全部");
+		jb_update = new JButton("修改密码");
+		jb_delete = new JButton("删除密码");
 		jb_finish = new JButton("退出系统");
 		
 		//设置按钮监听
 		jb_insert.addActionListener(this);
 		jb_select.addActionListener(this);
+		jb_all.addActionListener(this);
 		jb_finish.addActionListener(this);
+		jb_update.addActionListener(this);
+		jb_delete.addActionListener(this);
 		
 		jl1 = new JLabel("功能菜单");
 		
@@ -46,54 +52,31 @@ public class MainMenu extends JFrame implements ActionListener{
 		jp2 = new JPanel();
 		jp3 = new JPanel();
 		jp4 = new JPanel();
-		/*
-		//设置左侧界面
-		File file = new File("data.txt");//指定文件路径
-        if (file.exists()) {
-        	data_symbol = true;
-        	readdata();
-        	String[] web = new String[list.size()];
-        	for (int i=0; i<list.size(); i++) {
-        		web[i] = list.get(i).getWebName();
-        	}
-        	jlist = new JList(web);
-        }else {
-        	data_symbol = false;
-        	String[] temp = {"暂无数据"};
-        	jlist = new JList(temp);
-        }
-        jlist.addListSelectionListener(new ListSelectionListener() {
-			@Override
-			public void valueChanged(ListSelectionEvent arg0) {
-				// TODO Auto-generated method stub
-				if (list.size() != 0) {
-					jtf1.setText(list.get(jlist.getSelectedIndex()).getWebName());
-					jtf2.setText(list.get(jlist.getSelectedIndex()).getUserName());
-					jtf3.setText(list.get(jlist.getSelectedIndex()).getPassWord());
-				}else {
-					JOptionPane.showMessageDialog(MainMenu.this, "暂无数据", "错误信息", JOptionPane.ERROR_MESSAGE);
-				}
-				
-			}
-    		
-    	});
-        jp1.add(jlist);*/
+		jp5 = new JPanel();
+		jp6 = new JPanel();
+		jp7 = new JPanel();
         
         jp1.add(jl1);
         jp2.add(jb_select);
-        jp3.add(jb_insert);
-        jp4.add(jb_finish);
+        jp3.add(jb_all);
+        jp4.add(jb_insert);
+        jp5.add(jb_update);
+        jp6.add(jb_delete);
+        jp7.add(jb_finish);
 
 		//设置主面板
 		this.add(jp1);
 		this.add(jp2);
 		this.add(jp3);
 		this.add(jp4);
+		this.add(jp5);
+		this.add(jp6);
+		this.add(jp7);
 		
-		this.setLayout(new GridLayout(4, 1));
+		this.setLayout(new GridLayout(7, 1));
 		this.setTitle("网站密码管理系统");          
-		this.setSize(400,200);         
-        this.setLocation(400, 200);          
+		this.setSize(300,300);         
+        this.setLocation(300, 300);          
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    //设置当关闭窗口时，保证JVM也退出 
         this.setVisible(true);  
         this.setResizable(true); 
@@ -107,9 +90,18 @@ public class MainMenu extends JFrame implements ActionListener{
 		if(e.getActionCommand() == "查询密码") {
 			dispose();
 			SelectPassword selectPassword = new SelectPassword();	
+		}else if (e.getActionCommand() == "查询全部"){
+			dispose();
+			SelectAll selectAll = new SelectAll();
 		}else if (e.getActionCommand() == "增加密码"){
 			dispose();
 			InsertPassword insertPassword = new InsertPassword();
+		}else if (e.getActionCommand() == "修改密码"){
+			dispose();
+			UpdatePassword updatePassword = new UpdatePassword();
+		}else if (e.getActionCommand() == "删除密码"){
+			dispose();
+			DeletePassword deletePassword = new DeletePassword();
 		}else {
 			dispose();
 		}

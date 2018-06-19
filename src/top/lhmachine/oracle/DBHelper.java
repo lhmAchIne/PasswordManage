@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import top.lhmachine.login.PassWord;
+import top.lhmachine.main.PassWord;
 
 public class DBHelper{
 	// 定义连接所需的字符串

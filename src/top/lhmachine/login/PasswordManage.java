@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import top.lhmachine.main.MainMenu;
+
 public class PasswordManage extends JFrame implements ActionListener{
 	/**
 	 * @function: 实现登录界面
