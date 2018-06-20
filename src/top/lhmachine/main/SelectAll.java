@@ -43,9 +43,15 @@ public class SelectAll extends JFrame implements ActionListener{
 		jb_back.addActionListener(this);
 		jb_finish.addActionListener(this);
 		
-		jp1 = new JPanel(new GridLayout(1, 3));
-		jp2 = new JPanel(new GridLayout(1, 3));
+		jp1 = new JPanel(new GridLayout(1, 3, 10, 5));
+		jp1.setSize(400, 50);
+		jp1.setLocation(0, 10);
+		jp2 = new JPanel(new GridLayout(1, 3, 10, 5));
+		jp2.setSize(400, 200);
+		jp2.setLocation(0, 70);
 		jp3 = new JPanel();
+		jp3.setSize(400,50);
+		jp3.setLocation(0, 280);
 		
 		jp1.add(jl1);
 		jp1.add(jl2);
@@ -61,9 +67,9 @@ public class SelectAll extends JFrame implements ActionListener{
 		this.add(jp2);
 		this.add(jp3);
 		
-		this.setLayout(new GridLayout(3, 1));
+		this.setLayout(null);
 		this.setTitle("网站密码管理系统");          
-		this.setSize(400,300);         
+		this.setSize(400,400);         
         this.setLocation(400, 300);          
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    //设置当关闭窗口时，保证JVM也退出 
         this.setVisible(true);  
